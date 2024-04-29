@@ -1,20 +1,25 @@
-apply plugin: 'java'
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.2.3'
+	id 'io.spring.dependency-management' version '1.1.4'
+}
 
-// Set the source and target compatibility to Java 8
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	sourceCompatibility = '17'
+}
 
 repositories {
-    // You can add more repositories here if needed
-    jcenter()
+	mavenCentral()
 }
 
 dependencies {
-    // Add your dependencies here
-    // Example:
-    // implementation 'group:artifact:version'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-// Optional: Specify the main class for the project
-//mainClassName = 'com.example.Main'
-
+tasks.named('test') {
+	useJUnitPlatform()
+}
